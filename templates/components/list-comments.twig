@@ -1,0 +1,28 @@
+<form 
+    action="view-post?action=delete-comment&amp;post_id={{ postId }}&amp;"
+    method="post"
+    class="comment-list"
+>
+    <h3>{{ row.comment_count }} comments</h3>
+
+    {% for comment in comments %}
+        <div class="comment">
+            <div class="comment-meta">
+                Comment from <strong>
+                {{comment.name}}
+                </strong>on
+                {{comment.created_at | convertSqlDate}}
+                {% if isLoggedIn %}
+                    <input
+                        type="submit"
+                        name="delete-comment[{{ comment.id }}]"
+                        value="Delete"
+                    />
+                {% endif %}
+            </div>
+            <div class="comment-body">
+                {{comment.text | convertNewLinesToParagraphs | raw}}
+            </div>
+        </div>
+    {% endfor %}
+</form>

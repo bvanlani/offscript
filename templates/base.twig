@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="assets/main.css" />
+
+    <title>{% block title %}??{% endblock %}</title>
+</head>
+<body>
+    <header>
+        {% block header %}
+            {% include 'components/top-menu.twig' %}
+        {% endblock %}
+    </header>
+
+    <main>
+        {% block content %}
+            {# Child templates will override this block #}
+        {% endblock %}
+    </main>
+
+    <footer>
+        {% block footer %}
+            <p>&copy; {{ "now" | date("Y") }} My Company</p>
+        {% endblock %}
+    </footer>
+
+    {% block javascripts %}{% endblock %}
+</body>
+</html>

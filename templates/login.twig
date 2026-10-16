@@ -1,0 +1,42 @@
+{% extends 'base.twig' %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+    {% include 'components/title.twig' %}
+
+        {% if username %}
+            <div class="error box">
+                The username or password is incorrect, try agian
+            </div>
+        {% endif %}
+
+        <p>Login here:</p>
+        <form
+            method="post"
+            class="user-form"
+        >
+            <div>
+                <label for="username">
+                    Username:
+                </label>
+                <input
+                    type="text"
+                    id="username"
+                    name="username"
+                    value="{{ username }}"
+                />
+            </div>
+            <div>
+                <label for="password">
+                    Password:
+                </label>
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                />
+            </div>
+            <input type="submit" name="submit" value="Login" />
+        </form>
+{% endblock %}

@@ -1,0 +1,8 @@
+{
+    "require": {
+        "twig/twig": "^3.30",
+        "twig/markdown-extra": "^3.29",
+        "twig/extra-bundle": "^3.29",
+        "league/commonmark": "^2.10"
+    }
+}

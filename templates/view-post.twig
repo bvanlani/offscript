@@ -1,0 +1,24 @@
+{% extends 'base.twig' %}
+
+{% block title %}{{ row.title }}{% endblock %}
+
+{% block content %}
+    {% include '/components/title.twig' %}
+    <div class="post">
+            <h2>
+                {{ row.title }}
+            </h2>
+            <div class="date">
+                {{ row.created_at | convertSqlDate }}
+            </div>
+            <p>
+                {{ row.body | markdown_to_html}}
+            </p>
+        </div>
+        {% include '/components/list-comments.twig' %}
+        {% if isLoggedIn %}
+            {% include '/components/comment-form.twig' %}
+        {% else %}
+            <a href="login.php">Log in to comment</a>
+        {% endif %}
+{% endblock %}

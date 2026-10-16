@@ -1,0 +1,18 @@
+<div class="top-menu">
+    <div class="menu-options">
+        {% if isLoggedIn %}
+            {% if nav == 'home' %}
+                <a href="index">Home</a>
+            {% else %}
+                <a href="list-posts">All posts</a>
+            {% endif %}
+            |
+            <a href="edit-post">New post</a>
+            |
+            Hello {{ username }}.
+            <a href="logout">Log out</a>
+        {% else %}
+            <a href="login">Log in</a>
+        {% endif %}
+    </div>
+</div>

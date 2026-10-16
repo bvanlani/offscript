@@ -1,0 +1,54 @@
+{% extends 'base.twig' %}
+
+{% block title %}All posts{% endblock %}
+
+{% block header %}
+    {% include '/components/top-menu.twig' with {'nav': 'home'} %}
+{% endblock %}
+
+{% block content %}
+    <h1>Post list</h1>
+
+    <p>You have {{ posts | length }} posts.</p>
+
+    <form method="post">
+        <table id="post-list">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Creation date</th>
+                    <th>Comments</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for post in posts %}
+                <tr>
+                    <td>
+                        <a
+                            href="view-post?post_id=<?php echo $post['id']?>"
+                        >{{ post.title }}</a>
+                    </td>
+                    <td>
+                        {{ post.created_at }}
+                    </td>
+                    <td>
+                        {{post.commentCount}}
+                    </td>
+                    <td>
+                        <a href="edit-post?post_id={{ post.id }}">Edit</a>
+                    </td>
+                    <td>
+                        <input
+                            type="submit"
+                            name="delete-post[{{ post.id }}]"
+                            value="Delete"
+                        />
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </form>
+{% endblock %}

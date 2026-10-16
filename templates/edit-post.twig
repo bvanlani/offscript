@@ -1,0 +1,50 @@
+{% extends 'base.twig' %}
+
+{% block title %}Edit/Create Post{% endblock %}
+
+{% block content %}
+        {% if isEdit %}
+            <h1>Edit Post</h1>
+        {% else %}
+            <h1>New Post</h1>
+        {% endif %}
+
+        {% if errors %}
+            <div class="error box">
+                <ul>
+                    {% for error in errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+
+        <form method="post" class="post-form user-form">
+            <div>
+                <label for="post-title">Title:</label>
+                <input 
+                    id="post-title"
+                    name="post-title"
+                    type="text"
+                    value="{{ title }}"
+                    maxlength="60"
+                />
+            </div>
+            <div>
+                <label for="post-body">Body:</label>
+                <textarea
+                    id="post-body"
+                    name="post-body"
+                    rows="12"
+                    cols="70"
+                >{{ body }}</textarea>
+            </div>
+            <div>
+                <input
+                    type="submit"
+                    value="Save post"
+                />
+                <a href="index">Cancel</a>
+            </div>
+        </form>
+{% endblock %}
